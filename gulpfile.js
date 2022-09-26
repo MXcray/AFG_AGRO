@@ -41,7 +41,10 @@ function browsersync() {
 function scripts() {
 	return src([ // Берём файлы из источников
 		'node_modules/jquery/dist/jquery.min.js', // Пример подключения библиотеки
-		'app/js/app.js', // Пользовательские скрипты, использующие библиотеку, должны быть подключены в конце
+		'node_modules/slick-carousel/slick/slick.min.js',
+        'app/js/app.js', 
+        'app/js/sliders.js',
+         // Пользовательские скрипты, использующие библиотеку, должны быть подключены в конце
 		])
 	.pipe(concat('app.min.js')) // Конкатенируем в один файл
 	.pipe(uglify()) // Сжимаем JavaScript

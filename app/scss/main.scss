@@ -1,5 +1,9 @@
-@import 'fonts.scss';
+@import '_fonts.scss';
 @import '_colors.scss'; //партиал
+@import '../../node_modules/slick-carousel/slick/slick.scss';
+@import '../../node_modules/slick-carousel/slick/slick-theme.scss';
+//потом перекинутт в шрифты
+
 
 *, *:before, *:after {
     margin: 0;
@@ -38,8 +42,28 @@ body {
         max-width: none;
     }
 }
-.fw-bold, .title {
+.title {
     font-family: 'ProximaNovaBold';
+    &_center {
+        text-align: center;
+    }
+    &_main {
+        font-size: 40px;
+        @media screen and (max-width: 768px){
+            font-size: 32px !important;
+        }
+        @media screen and (max-width: 544px){
+            font-size: 28px !important;
+        }
+    }
+}
+.subtitle {
+    &_main {
+        font-size: 20px;
+        @media screen and (max-width: 992px){
+            font-size: 16px !important;
+        }
+    }
 }
 
 // .full-screen-wrapper {
@@ -169,12 +193,15 @@ body {
     &__content {
         display: flex;
         margin-top: 96px;
+        padding-bottom: 126px;
         @media screen and (max-width: 1200px){
             flex-wrap: wrap;
             margin-top: 50px;
+            padding-bottom: 26px;
         }
         @media screen and (max-width: 544px){
-            display: block;
+            // display: block;
+            display: flex;
         }
     }
     &__info {
@@ -269,10 +296,7 @@ body {
 }
 .features-list {
     color: #fff;
-    padding-bottom: 126px;
-    @media screen and (max-width: 1200px){
-        padding-bottom: 26px;
-    }
+    // padding-bottom: 126px;  //WARNING
     &__elem {
         display: flex;
         align-items: center;
@@ -295,17 +319,22 @@ body {
     @media screen and (max-width: 1200px){
         width: 950px;
         margin: 0 auto;
+        margin-top: 40px;
     }
     @media screen and (max-width: 992px){
         width: 750px;
+        margin-top: 30px;
     }
     @media screen and (max-width: 768px){
         width: 500px;
+        margin-top: 30px;
     }
     @media screen and (max-width: 544px){
         width: 335px;
         margin: 0 auto;
         max-width: 100%;
+        margin-top: 30px;
+        // margin-top: 450px;
     }
     &__content {
         padding: 44px 40px 25px 40px; 
@@ -450,8 +479,6 @@ body {
 //====================================Confidence=======================================
 .confidence {
     &__title {
-        text-align: center;
-        font-size: 40px;
         margin: 72px 0 61px 0;
     }
     &__features-line {
@@ -616,7 +643,6 @@ body {
         }
     }
     &__title {
-        font-size: 40px;
         margin-bottom: 33px;
         @media screen and (max-width: 992px){
             margin-bottom: 2-px;
@@ -760,22 +786,13 @@ body {
 //=========================Advantage========================
 .advantage {
     background-color: $intermediate;
-    &__title, &__subtitle {
-        text-align: center;
-    }
     &__title {
-        font-size: 40px;
-        margin: 72px 0 21px 0;
-        @media screen and (max-width: 992px){
-            font-size: 28px;
-        }
+        padding: 72px 0 21px 0;
     }
     &__subtitle {
         font-size: 20px;
         margin-bottom: 61px;
-        @media screen and (max-width: 992px){
-            font-size: 16px;
-        }
+        text-align: center;
     }
     &__content {
         display: flex;
@@ -811,4 +828,384 @@ body {
             }
         }
     }
+}
+//===================Project==============
+.project {
+    &__title {
+        font-size: 40px;
+        margin-top: 72px;
+        @media screen and (max-width: 992px){
+            margin-top: 50px;
+        }
+        @media screen and (max-width: 768px){
+            margin-top: 40px;
+        }
+        @media screen and (max-width: 544px){
+            margin-top: 33px;
+        }
+    }
+    &__subtitle {
+        font-size: 20px;
+        margin: 22px 0 71px 0;
+        text-align: center;
+        @media screen and (max-width: 992px){
+            margin: 22px 0 50px 0;
+        }
+        @media screen and (max-width: 768px){
+            margin: 20px 0 40px 0;
+        }
+        @media screen and (max-width: 544px){
+            margin: 16px auto 33px auto;
+            max-width: 335px;
+        }
+    }
+    &__slider {
+        padding-bottom: 80px;
+        @media screen and (max-width: 992px){
+            padding-bottom: 60px;
+        }
+        @media screen and (max-width: 544px){
+            padding-bottom: 40px;
+        }
+    }
+    &__card {
+        padding-left: 9.5px;
+        padding-right: 9.5px; //test мешает
+        @media screen and (max-width: 1200px){
+            width: 50%;
+        }
+        &-img {
+            width: 100%;
+        }
+        &-text {
+            padding: 0 40px;
+            border-left: 5px solid #F0F0F0;
+            border-right: 5px solid #F0F0F0;
+            @media screen and (max-width: 544px){
+                padding: 0 35px;
+            }
+        }
+        &-title {
+            font-size: 20px;
+            padding: 32px 0 25px 0;
+            @media screen and (max-width: 544px){
+                padding: 25px 0 18px 0;
+            }
+            @media screen and (max-width: 1200px){
+                font-size: 16px;
+            }
+        }
+        &-description {
+            padding-bottom: 31px;
+            @media screen and (max-width: 544px){
+                padding-bottom: 25px;
+            }
+        }
+        &-feature {
+            display: flex;
+            align-items: flex-start;
+            padding-bottom: 15px;
+            &:last-child {
+                padding-bottom: 37px;
+            }
+            img {
+                margin-right: 15px;
+            }
+            p {
+                font-size: 14px;
+            }
+        }
+        &-button {
+            width: 100%;
+        }
+    }
+}
+//=================Slider================
+.container-slider {
+     max-width: 1187px;
+    //  max-width: 1200px;
+     margin: 0 auto;
+     @media screen  and (max-width: 1300px){
+         max-width: 991px;
+         padding: 0 20px;
+     }
+     @media screen  and (max-width: 1050px){
+         max-width: 767px;
+     }
+     @media screen  and (max-width: 870px){
+         max-width: 543px;
+     }
+     @media screen and (max-width: 544px){
+         max-width: none;
+     }
+}
+.slider {
+    &-box {
+    position: relative;
+    }
+.slick {
+    &-dots {
+        // bottom: -40px;
+        bottom: 30px;
+        li {
+            margin-right: 20px;
+            width: 10px;
+            height: 10px;
+            &:last-child {
+                margin-right: 0;
+            }
+            button {
+                display: none;
+            }
+        }
+        &>[role="presentation"] {
+            background-color: #d9d9d9;
+            border-radius: 100%;
+        }
+        .slick-active {
+            background-color: $mainColor;
+            border-radius: 100%;
+        }
+    }
+}
+}
+  .prev,
+  .next {
+    position: absolute;
+    top: 48%;
+    // test===
+    height: 60px;
+    width: 40px;
+    transform: scale(0.8);
+    //=======
+    z-index: 1;
+    cursor: pointer;
+  }
+  .prev {
+    left: -50px;
+  }
+  .next {
+    right: -50px;
+  }
+
+// ================Company=======================
+.company {
+    background-color: $intermediate;
+    &__title {
+        padding: 72px 0 69px 0;
+    }
+    &__content {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    &__row {
+        min-width: 100%;
+        display: flex;
+        justify-content: space-between;
+        @media screen and (max-width: 992px){
+            flex-direction: column;
+            min-width: 30%;
+        }
+        @media screen and (max-width: 768px){
+            min-width: 20%;
+            max-width: 30%;
+        }
+        img {
+            width: 15%;
+            margin-bottom: 80px;
+            @media screen and (max-width: 1200px){
+                margin-bottom: 60px;
+            }
+            @media screen and (max-width: 992px){
+                width: 90%;
+                margin-bottom: 45px;
+            }
+            @media screen and (max-width: 768px){
+                margin-bottom: 30px;
+            }
+        }
+    }
+}
+.equipment {
+    &__title {
+        margin: 72px 0 69px 0;
+        @media screen and (max-width: 992px){
+            margin-top: 50px;
+            margin-bottom: 49px;
+        }
+        @media screen and (max-width: 768px){
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+        @media screen and (max-width: 544px){
+            margin-top: 33px;
+            margin-bottom: 30px;
+        }
+    }
+    &__content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 80px;
+        @media screen and (max-width: 1200px){
+            margin-bottom: 60px;
+        }
+        @media screen and (max-width: 992px){
+            margin-bottom: 40px;
+        }
+        @media screen and (max-width: 768px){
+            margin-bottom: 30px;
+        }
+    }
+    &__card {
+        width: 49.2%;
+        margin-bottom: 20px;
+        background-color: $mainColor;
+        &:nth-child(even) {
+            padding: 0;
+        }
+        img {
+            width: 100%;
+        }
+        p {
+            font-size: 20px;
+            height: 127px;
+            width: 560px;
+            // width: 100%;
+            padding: 33px 30px 62px 40px;
+            position: relative;
+            top: -5px;
+            color: #fff;
+            font-weight: bold;
+            @media screen and (max-width: 1200px){
+                width: 450px;
+            }
+            @media screen and (max-width: 992px){
+                width: 300px;
+                height: 135px;
+            }
+            @media screen and (max-width: 768px){
+                padding: 14px 25px 37px 20px;
+                width: 200px;
+                font-size: 18px;
+                line-height: 21px;
+            }
+            @media screen and (max-width: 544px){
+                width: 120px;
+                font-size: 14px;
+            }
+        }
+    }
+}
+.diplom {
+    background-color: $intermediate;
+    &__title {
+        padding: 72px 0 69px 0;
+        @media screen and (max-width: 992px){
+            padding-top: 50px;
+            padding-bottom: 49px;
+        }
+        @media screen and (max-width: 768px){
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+        @media screen and (max-width: 544px){
+            padding-top: 33px;
+            padding-bottom: 30px;
+        }
+    }
+    &__slider {
+        padding-bottom: 150px;
+        @media screen and (max-width: 768px){
+            padding-bottom: 110px;
+        }
+        @media screen and (max-width: 544px){
+            padding-bottom: 90px;
+        }
+        div {
+            img {
+                margin: 0 auto;
+            }
+        }
+        @media screen and (max-width: 601px){
+            .prev {
+                left: 20px;
+            }
+            .next {
+                right: 20px;
+            }
+        }
+        .next, .prev {
+            top: 25%;
+        }
+        .slick-dots {
+            bottom: 100px;
+            @media screen and (max-width: 544px){
+                bottom: 40px;
+            }
+            @media screen and (max-width: 768px){
+                bottom: 60px;
+            }
+        }
+    }
+}
+//=========================VideoReview========================
+.slider_for {
+    #video {
+        width: 70%;
+        padding-bottom: 40px;
+        margin: 0 auto;
+        @media screen and (max-width: 544px){
+            width: 100%;
+        }
+        &-play {
+            @media screen and (max-width: 768px){
+                top: -10px;
+            }
+            @media screen and (max-width: 544px){
+                top: -25px;
+            }
+        }
+    }
+    .video-control {
+        @media screen and (max-width: 992px){
+            transform: scale(0.8);
+            top: -10px;
+        }
+        @media screen and (max-width: 768px){
+            transform: scale(0.7);
+        }
+        @media screen and (max-width: 544px){
+            transform: scale(0.5);
+        }
+    }
+    .next, .prev {
+        top: 40%;
+    }
+    .prev {
+        left: 60px;
+    }
+    .next {
+        right: 60px;
+    }
+}
+.slider_nav {
+    img {
+        margin: 0 auto;
+    }
+    div > img {
+        // width: 100%;
+        @media screen and (max-width: 544px){
+            width: 70%;
+        }
+    }
+    .next, .prev {
+        top: 20%;
+    }
+}
+.v-review {
+
 }
