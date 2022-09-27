@@ -38,6 +38,11 @@ function browsersync() {
 	})
 }
 
+function fonts() {
+    return src('app/fonts/**/*')
+    .pipe(dest('dist/fonts'))
+}
+
 function scripts() {
 	return src([ // Берём файлы из источников
 		'node_modules/jquery/dist/jquery.min.js', // Пример подключения библиотеки
@@ -118,7 +123,9 @@ exports.browsersync = browsersync;
  
 // Экспортируем функцию scripts() в таск scripts
 exports.scripts = scripts;
- 
+
+exports.fonts = fonts;
+
 // Экспортируем функцию styles() в таск styles
 exports.styles = styles;
 
@@ -129,7 +136,7 @@ exports.images = images;
 exports.cleanimg = cleanimg;
 
 // Создаём новый таск "build", который последовательно выполняет нужные операции
-exports.build = series(cleandist, styles, scripts, images, buildcopy);
+exports.build = series(cleandist, fonts, styles, scripts, images, buildcopy);
 
 // Экспортируем дефолтный таск с нужным набором функций
 exports.default = parallel(styles, scripts, browsersync, startwatch);
