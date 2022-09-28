@@ -1,6 +1,4 @@
 $(document).ready(function () {
-    // $('.slider').slick({
-    // });
     $(".project__slider").slick({
         slidesToShow: 3,
         dots: true,
@@ -96,6 +94,7 @@ $(document).ready(function () {
         asNavFor: ".slider_for",
         dots: true,
         focusOnSelect: true,
+        // infinite: false,
         responsive: [
             {
                 breakpoint: 1300,
@@ -131,6 +130,22 @@ $(document).ready(function () {
             video.load();
         }
     });
+
+    var mainVideoContainer = $('#video');
+    var mainVideoControls = $(".video-control_main");
+    mainVideoControls.on('click', function() {
+        var mainVideo = $('#myVideo')[0];
+        if (mainVideo.paused) {
+            mainVideo.play();
+            mainVideoContainer.addClass('video-is-playing');
+        } else {
+            mainVideo.pause();
+            mainVideoContainer.removeClass('video-is-playing');
+            //	возвращаем постер
+            mainVideo.load();
+        }
+    });
+
 
     $(".slider_top").slick({
         slidesToShow: 1,

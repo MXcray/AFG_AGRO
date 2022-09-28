@@ -1,8 +1,7 @@
 @import '_fonts.scss';
-@import '_colors.scss'; //партиал
+@import '_colors.scss'; //партиалы
 @import '../../node_modules/slick-carousel/slick/slick.scss';
 @import '../../node_modules/slick-carousel/slick/slick-theme.scss';
-//потом перекинутт в шрифты
 
 
 *, *:before, *:after {
@@ -133,6 +132,10 @@ body {
     padding: 11px 29px 11px 30px;
     border: 5px solid $mainColor;
     cursor: pointer;
+    &:hover {
+        background-color: darken($mainColor, 10%);
+        border-color: darken($mainColor, 10%);
+    }
 }
 .header {
     display: flex;
@@ -297,7 +300,7 @@ body {
 }
 .features-list {
     color: #fff;
-    font-family: 'RobotoRegular';
+    // font-family: 'RobotoRegular';
     // padding-bottom: 126px;  //WARNING
     &__elem {
         display: flex;
@@ -479,6 +482,7 @@ body {
         text-align: center;
         font-size: 12px;
         line-height: 18px;
+        font-family: 'robotoRegular';
         @media screen and (max-width: 1200px){
             text-align: center;
             max-width: 100%;
@@ -1186,8 +1190,11 @@ body {
                 line-height: 21px;
             }
             @media screen and (max-width: 544px){
-                width: 120px;
                 font-size: 14px;
+                height: 145px;
+            }
+            @media screen and (max-width: 420px){
+                width: 120px;
             }
         }
     }
@@ -1251,6 +1258,9 @@ body {
         width: 70%;
         padding-bottom: 40px;
         margin: 0 auto;
+        @media screen and (max-width: 870px){
+            width: 100%;
+        }
         @media screen and (max-width: 768px){
             width: 100%;
             padding-bottom: 30px;
@@ -1332,7 +1342,7 @@ body {
         }
     }
     .next, .prev {
-        top: 20%;
+        top: 10%;
         @media screen and (max-width: 544px){
             top: 0%;
         }
@@ -1490,7 +1500,13 @@ body {
         flex-wrap: wrap;
         max-width: 100%;
 
-        margin-bottom: 40px;
+        margin-bottom: 80px;
+        @media screen and (max-width: 992px){
+            margin-bottom: 60px;
+        }
+        @media screen and (max-width: 768px){
+            margin-bottom: 40px;
+        }
     }
     &__row {
         display: flex;
@@ -1574,7 +1590,17 @@ body {
 //======================Geography===============
 .geography {
     &__title {
+        padding-top: 72px;
         padding-bottom: 22px;
+        @media screen and (max-width: 992px){
+            padding-top: 50px;
+        }
+        @media screen and (max-width: 768px){
+            padding-top: 40px;
+        }
+        @media screen and (max-width: 544px){
+            padding-top: 25px;
+        }
     }
     &__subtitle {
         text-align: center;
